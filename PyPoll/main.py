@@ -48,8 +48,8 @@ print(F'Total Votes: {}',file = output_file)
 print(F'-------------------------',file = output_file)  
 
 for candidate in candidates:
-    for votes_list.append(vote for vote in votes if vote == candidate):
-        print(F'{candidate}: {round(float(((len(votes_list))/total_votes) * 100),3)}% ({int(len(votes_list))})',file = output_file)
+    votes_list = [vote for vote in votes if vote == candidate]
+    print(F'{candidate}: {round(float(((len(votes_list))/total_votes) * 100),3)}% ({int(len(votes_list))})',file = output_file)
 
 
 #print(F'Election Results')

@@ -52,21 +52,12 @@ print(F'-------------------------',file = output_file)
 print(F'Total Votes: {total_votes}',file = output_file)
 print(F'-------------------------',file = output_file)
 
+# Sum the votes for every candidate
 for candidate in candidates:
     votes_list = [vote for vote in votes if vote == candidate]
     votes_per_candidate.append(round(float(((len(votes_list))/total_votes) * 100),3))
     print(F'{candidate}: {round(float(((len(votes_list))/total_votes) * 100),3)}% ({int(len(votes_list))})',file = output_file)
     print(F'{candidate}: {round(float(((len(votes_list))/total_votes) * 100),3)}% ({int(len(votes_list))})')
-
-
-#print(F'Election Results')
-#print(F'-------------------------')
-#print(F'Total Votes: {}')
-#print(F'-------------------------')
-#print(F'{}: {}% ({})')
-#print(F'{}: {}% ({})')
-#print(F'{}: {}% ({})')
-#print(F'{}: {}% ({})')
 
 # Find the winner of the election
 idx = votes_per_candidate.index(max(votes_per_candidate))
@@ -76,12 +67,6 @@ print(F'-------------------------')
 print(F'-------------------------',file = output_file)
 print(F'Winner: {candidates[idx]}',file = output_file)
 print(F'-------------------------',file = output_file)
-
-# Set variable for output file
-#output_file = open("Election Results.txt","a") 
-
-# write to the file
-#print(F'',file = output_file)
 
 # Closing a file "output_file.txt" 
 output_file.close()

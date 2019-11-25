@@ -20,6 +20,7 @@ voter = []
 votes = []
 total_votes = 0
 votes_list = []
+votes_per_candidate = []
 
 
 # Open file to read
@@ -42,14 +43,20 @@ with open(csvpath, newline="") as csvfile:
 # Set variable for output file
 output_file = open("Election Results.txt","a") 
 
+print(F'Election Results')
+print(F'-------------------------')
+print(F'Total Votes: {total_votes}')
+print(F'-------------------------')  
 print(F'Election Results',file = output_file)
 print(F'-------------------------',file = output_file)
-print(F'Total Votes: {}',file = output_file)
-print(F'-------------------------',file = output_file)  
+print(F'Total Votes: {total_votes}',file = output_file)
+print(F'-------------------------',file = output_file)
 
 for candidate in candidates:
     votes_list = [vote for vote in votes if vote == candidate]
+    votes_per_candidate.append(round(float(((len(votes_list))/total_votes) * 100),3))
     print(F'{candidate}: {round(float(((len(votes_list))/total_votes) * 100),3)}% ({int(len(votes_list))})',file = output_file)
+    print(F'{candidate}: {round(float(((len(votes_list))/total_votes) * 100),3)}% ({int(len(votes_list))})')
 
 
 #print(F'Election Results')
@@ -60,8 +67,14 @@ for candidate in candidates:
 #print(F'{}: {}% ({})')
 #print(F'{}: {}% ({})')
 #print(F'{}: {}% ({})')
+
+# Find the winner of the election
+idx = votes_per_candidate.index(max(votes_per_candidate))
+print(F'-------------------------')
+print(F'Winner: {candidates[idx]}')
+print(F'-------------------------')
 print(F'-------------------------',file = output_file)
-print(F'Winner: {}')
+print(F'Winner: {candidates[idx]}',file = output_file)
 print(F'-------------------------',file = output_file)
 
 # Set variable for output file
